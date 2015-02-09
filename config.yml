@@ -1,0 +1,19 @@
+UltimateAnnounce:
+  Prefix: "&6[&cDefault&6]"
+  Header: "&r&6]&7===============&cThis is a Header&7===============&6["
+  Footer: "&r&6]&7===============&cThis is a Footer&7===============&6["
+  space-between-messages: true
+  Sound: "NOTE_PLING"
+  Messages:
+  - "&cDemo message"
+  - "&cPlugin created by Maro"
+  Interval: 60
+  Enabled: true
+  Random: false
+ActionAnnounce:
+  Messages:
+  - "&cDemo Action message"
+  - "&cPlugin created by Maro"
+  Interval: 50
+  Duration: 10
+  Random: false

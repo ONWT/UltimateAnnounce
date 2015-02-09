@@ -1,0 +1,134 @@
+name: UltimateAnnounce
+main: me.Maro.UltimateAnnounce.UltimateAnnounce
+version: 1.3.4
+commands:
+   ultimateannounce:
+      description: Manage UltimateAnnouncements
+      usage: use /<command> help to get a list of commands.
+   uan:
+      description: Manage UltimateAnnouncements
+      usage: use /<command> help to get a list of commands.
+   actionannounce:
+      description: Manage ActionAnnouncements
+      usage: use /<command> help to get a list of commands.
+   uac:
+      description: Manage ActionAnnouncements
+      usage: use /<command> help to get a list of commands.
+permissions:
+    uan.*:
+        description: Gives access to all uan commands.
+        children:
+            uan.receive: true
+            uan.add: true
+            uan.remove: true
+            uan.broadcast: true
+            uan.list: true
+            uan.prefix: true
+            uan.enable: true
+            uan.disable: true
+            uan.interval: true
+            uan.reload: true
+            uan.random: true
+            uan.space: true
+            uan.version: true
+    uan.receive:
+        description: Allows you to receive uans.
+        default: op        
+    uan.add:
+        description: Allows you to add uans.
+        default: op
+    uan.remove:
+        description: Allows you to remove uans.
+        default: op
+    uan.list:
+        description: Allows you to list uans.
+        default: op    
+    uan.space:
+        description: Toggle space between messages.
+        default: op    
+    uan.broadcast:
+        description: Allows you to manually broadcast an uan.
+        default: op
+    uan.prefix:
+        description: Allows you to change the uan prefix.
+        default: op
+    uan.header:
+        description: Allows you to change the uan prefix.
+        default: op
+    uan.footer:
+        description: Allows you to change the uan prefix.
+        default: op
+    uan.sound:
+        description: Allows you to change the uan prefix.
+        default: op
+    uan.enable:
+        description: Allows you to enable uans.
+        default: op
+    uan.disable:
+        description: Allows you to disable uans.
+        default: op
+    uan.interval:
+        description: Allows you to change the uan interval.
+        default: op
+    uan.reload:
+        description: Allows you to reload the configuration.
+        default: op
+    uan.random:
+        description: Allows you to toggle random mode.
+        default: op
+    uan.version:
+        description: Allows you to access plugin version information.
+        default: op
+    uac.*:
+        description: Gives access to all uac commands.
+        children:
+            uac.receive: true
+            uac.add: true
+            uac.remove: true
+            uac.broadcast: true
+            uac.list: true
+            uac.prefix: true
+            uac.enable: true
+            uac.disable: true
+            uac.interval: true
+            uac.duration: true
+            uac.reload: true
+            uac.random: true
+            uac.version: true
+    uac.receive:
+        description: Allows you to receive uacs.
+        default: op        
+    uac.add:
+        description: Allows you to add uacs.
+        default: op
+    uac.remove:
+        description: Allows you to remove uacs.
+        default: op
+    uac.list:
+        description: Allows you to list uacs.
+        default: op    
+    uac.broadcast:
+        description: Allows you to manually broadcast an uac.
+        default: op
+    uac.enable:
+        description: Allows you to enable uacs.
+        default: op
+    uac.disable:
+        description: Allows you to disable uacs.
+        default: op
+    uac.interval:
+        description: Allows you to change the uac interval.
+        default: op
+    uac.duration:
+        description: Allows you to change the uac duration.
+        default: op
+    uac.reload:
+        description: Allows you to reload the configuration.
+        default: op
+    uac.random:
+        description: Allows you to toggle random mode.
+        default: op
+    uac.version:
+        description: Allows you to access plugin version information.
+        default: op
+        
