@@ -1,0 +1,5 @@
+/target
+.idea/*
+/out
+UltimateAnnounce.iml
+src/META-INF/MANIFEST.MF
