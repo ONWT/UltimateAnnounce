@@ -220,13 +220,12 @@ public final class UltimateAnnounce
 							p.sendMessage(" ");
 							p.sendMessage(ChatColor.translateAlternateColorCodes('&', footer));
 							p.sendMessage(" ");
-							p.playSound(p.getLocation(), Sound.valueOf(getConfig().getString("UltimateAnnounce.Sound")), 1.0F, 1.0F);
 						} else {
 							p.sendMessage(ChatColor.translateAlternateColorCodes('&', header));
 							p.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + "&r " + m));
 							p.sendMessage(ChatColor.translateAlternateColorCodes('&', footer));
-							p.playSound(p.getLocation(), Sound.valueOf(getConfig().getString("UltimateAnnounce.Sound")), 1.0F, 1.0F);
 						}
+						p.playSound(p.getLocation(), Sound.valueOf(getConfig().getString("UltimateAnnounce.Sound")), 1.0F, 1.0F);
 					}
 				}
 			}
