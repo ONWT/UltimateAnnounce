@@ -31,14 +31,12 @@ public final class UltimateAnnounce
 	private int lastAnnounced = 0;
 	private boolean active;
 	private HashSet<String> BukkitSound = new HashSet<String>();
-	private List<String> messages = new ArrayList<String>();
+	private ArrayList<String> messages = new ArrayList<String>();
 	public int ainterval;
 	public int aduration;
 	public boolean arandom = false;
 	private int alastAnnounced = 0;
-	public boolean aactive;
-	private UltimateAnnounce a;
-	public List<String> amessages = new ArrayList<String>();
+	public ArrayList<String> amessages = new ArrayList<String>();
 
 	public void onEnable() {
 		if (!new File(getDataFolder(), "config.yml").exists()) {
@@ -111,7 +109,7 @@ public final class UltimateAnnounce
 	}
 
 
-	public void setMessages(List<String> messages) {
+	public void setMessages(ArrayList<String> messages) {
 		this.messages = messages;
 	}
 
@@ -247,11 +245,11 @@ public final class UltimateAnnounce
 		footer = getConfig().getString("UltimateAnnounce.Footer", getFooter());
 		space = getConfig().getBoolean("UltimateAnnounce.space-between-messages", isSpace());
 		sound = getConfig().getString("UltimateAnnounce.Sound", getSound());
-		messages = getConfig().getStringList("UltimateAnnounce.Messages");
+		messages = (ArrayList<String>) getConfig().getStringList("UltimateAnnounce.Messages");
 		interval = getConfig().getInt("UltimateAnnounce.Interval", getInterval());
 		active = getConfig().getBoolean("UltimateAnnounce.Enabled", isActive());
 		random = getConfig().getBoolean("UltimateAnnounce.Random", isRandom());
-		amessages = getConfig().getStringList("ActionAnnounce.Messages");
+		amessages = (ArrayList<String>) getConfig().getStringList("ActionAnnounce.Messages");
 		ainterval = getConfig().getInt("ActionAnnounce.Interval", getaInterval());
 		aduration = getConfig().getInt("ActionAnnounce.Duration", getaDuration());
 		arandom = getConfig().getBoolean("ActionAnnounce.Random", isRandom());
@@ -316,7 +314,7 @@ public final class UltimateAnnounce
 	}
 
 
-	public void setaMessages(List<String> messages) {
+	public void setaMessages(ArrayList<String> messages) {
 		this.amessages = messages;
 	}
 
@@ -397,12 +395,11 @@ public final class UltimateAnnounce
 	}
 
 
-	@SuppressWarnings("deprecation")
 	public void broadcastaMessage(int id) {
 		if (isaMessage(id)) {
 			final String m = getaMessage(id);
 			if (m.startsWith("/")) {
-				a.getServer().dispatchCommand(a.getServer().getConsoleSender(), m.substring(1));
+				this.getServer().dispatchCommand(this.getServer().getConsoleSender(), m.substring(1));
 			} else {
 				for (final Player p : Bukkit.getOnlinePlayers()) {
 					if (p.hasPermission("uan.receive")) {
@@ -431,7 +428,7 @@ public final class UltimateAnnounce
 	@SuppressWarnings("deprecation")
 	public void sayaMessage(final String m) {
 		if (m.startsWith("/")) {
-			a.getServer().dispatchCommand(a.getServer().getConsoleSender(), m.substring(1));
+			this.getServer().dispatchCommand(this.getServer().getConsoleSender(), m.substring(1));
 		} else {
 			for (final Player p : Bukkit.getOnlinePlayers()) {
 				if (p.hasPermission("uac.receive")) {
