@@ -1,20 +1,20 @@
 package me.Maro.UltimateAnnounce;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 import me.Maro.ActionAnnounce.ActionAPI;
 import me.Maro.ActionAnnounce.aCommands;
 import me.Maro.ActionAnnounce.aThread;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.HashSet;
+import java.util.Random;
 
 
 public final class UltimateAnnounce
@@ -30,16 +30,15 @@ public final class UltimateAnnounce
 	private boolean random = false;
 	private int lastAnnounced = 0;
 	private boolean active;
-	@SuppressWarnings({"unchecked", "rawtypes"})
-	private List<String> messages = new ArrayList();
+	private HashSet<String> BukkitSound = new HashSet<String>();
+	private List<String> messages = new ArrayList<String>();
 	public int ainterval;
 	public int aduration;
 	public boolean arandom = false;
 	private int alastAnnounced = 0;
 	public boolean aactive;
 	private UltimateAnnounce a;
-	@SuppressWarnings({"unchecked", "rawtypes"})
-	public List<String> amessages = new ArrayList();
+	public List<String> amessages = new ArrayList<String>();
 
 	public void onEnable() {
 		if (!new File(getDataFolder(), "config.yml").exists()) {
@@ -63,6 +62,11 @@ public final class UltimateAnnounce
 	public void onDisable() {
 	}
 
+	public void SetSoundEnums() {
+		for (Sound c : Sound.values()) {
+			BukkitSound.add(c.name());
+		}
+	}
 
 	public String getPrefix() {
 		return prefix;
@@ -194,10 +198,7 @@ public final class UltimateAnnounce
 
 
 	public boolean isMessage(int id) {
-		if ((id <= messages.size()) && (id > 0)) {
-			return true;
-		}
-		return false;
+		return (id <= messages.size()) && (id > 0);
 	}
 
 
@@ -225,7 +226,13 @@ public final class UltimateAnnounce
 							p.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + "&r " + m));
 							p.sendMessage(ChatColor.translateAlternateColorCodes('&', footer));
 						}
-						p.playSound(p.getLocation(), Sound.valueOf(getConfig().getString("UltimateAnnounce.Sound")), 1.0F, 1.0F);
+						String SoundValue = getSound();
+						//Check if the value we passed in is a valid enum
+						if(BukkitSound.contains(SoundValue)) {
+							p.playSound(p.getLocation(), Sound.valueOf(SoundValue), 1.0F, 1.0F);
+						}else{
+							p.playSound(p.getLocation(), SoundValue, 1.0F, 1.0F);
+						}
 					}
 				}
 			}
@@ -233,6 +240,7 @@ public final class UltimateAnnounce
 	}
 
 	public void load() {
+		SetSoundEnums();
 		reloadConfig();
 		prefix = getConfig().getString("UltimateAnnounce.Prefix", getPrefix());
 		header = getConfig().getString("UltimateAnnounce.Header", getHeader());
@@ -385,10 +393,7 @@ public final class UltimateAnnounce
 
 
 	public boolean isaMessage(int id) {
-		if ((id <= amessages.size()) && (id > 0)) {
-			return true;
-		}
-		return false;
+		return (id <= amessages.size()) && (id > 0);
 	}
 
 
